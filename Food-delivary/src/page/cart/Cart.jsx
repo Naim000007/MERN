@@ -4,7 +4,7 @@ import { StoreContext } from '../../Context/StoreContex'
 import { assets } from '../../assets/assets'
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart } = useContext(StoreContext)
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount } = useContext(StoreContext)
   return (
     <div className='cart'>
       <div className='cart-items'>
@@ -44,17 +44,21 @@ const Cart = () => {
           <div>
             <div className='cart-total-details'>
               <p>Subtotal</p>
-              <p> {0} </p>
+              <p> ${getTotalCartAmount()} </p>
               {/* <hr /> */}
             </div>
             <div className='cart-total-details'>
               <p>Delivery</p>
-              <p> {2} </p>
-              {/* <hr /> */}
+              {
+                getTotalCartAmount() === 0 ? <p>$0</p> : <p>$2</p>
+              }
             </div>
             <div className='cart-total-details'>
               <b>Total</b>
-              <b>{0}</b>
+              {
+                getTotalCartAmount() === 0 ? <b>$0</b> : <b>${getTotalCartAmount() + 2}</b>
+              }
+
               {/* <hr /> */}
             </div>
           </div>
