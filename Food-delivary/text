@@ -1,0 +1,2 @@
+for backend you need to insatll 
+npm i mongoose jsonwebtoken bcrypt cors dotenv cors body-parser multer stripe validator nodemon 
