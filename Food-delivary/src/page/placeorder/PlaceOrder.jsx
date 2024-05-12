@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './PlaceOrder.css'
+import { StoreContext } from '../../Context/StoreContex'
 
 const PlaceOrder = () => {
+  const { getTotalCartAmount } = useContext(StoreContext)
   return (
     <div className='place-order'>
       <div className='place-order-left'>
@@ -15,14 +17,37 @@ const PlaceOrder = () => {
         <div className='multi-fields'>
           <input type='text' placeholder='City' />
           <input type='text' placeholder='Division' />
-          <div className='multi-fields'>
-            <input type='text' placeholder='Zip Code' />
-            <input type='text' placeholder='Country' />
-          </div>
+
           <input type='text' placeholder='Phone Number' />
         </div>
       </div>
-      <div className='place-order-right'></div>
+      <div className='place-order-right'>
+        <div className='cart-total'>
+          <h2>Cart Totals</h2>
+          <div>
+            <div className='cart-total-details'>
+              <p>Subtotal</p>
+              <p> ${getTotalCartAmount()} </p>
+              {/* <hr /> */}
+            </div>
+            <div className='cart-total-details'>
+              <p>Delivery</p>
+              {
+                getTotalCartAmount() === 0 ? <p>$0</p> : <p>$2</p>
+              }
+            </div>
+            <div className='cart-total-details'>
+              <b>Total</b>
+              {
+                getTotalCartAmount() === 0 ? <b>$0</b> : <b>${getTotalCartAmount() + 2}</b>
+              }
+
+              {/* <hr /> */}
+            </div>
+          </div>
+          <button>Proceed To Payment</button>
+        </div>
+      </div>
     </div>
   )
 }
