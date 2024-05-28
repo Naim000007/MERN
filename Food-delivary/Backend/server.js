@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
+import foodRouter from "./routes/foodRoute.js";
 
 //app config
 
@@ -15,6 +16,9 @@ app.use(cors());
 
 //db connection 
 connectDB();
+
+// api endpoints
+app.use("/api/food", foodRouter)
 
 
 app.get("/", (req, res) => {
