@@ -1,1 +1,2 @@
- npm i react-hot-toast react-icons sass firebase react-router-dom react-table
+ npm i react-hot-toast react-icons sass firebase react-router-dom react-table 
+ npm install --save chart.js react-chartjs-2
